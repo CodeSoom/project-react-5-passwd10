@@ -9,10 +9,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint '*/**/*.{js,ts,tsx}'"
+    "lint": "eslint '*/**/*.{js,ts,tsx}'",
+    "test:unit": "jest",
+    "coverage": "yarn test:unit -- --coverage",
+    "test": "yarn coverage"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.0.2",
     "@types/react": "^17.0.29",
+    "babel-jest": "^27.2.5",
+    "jest": "^27.2.5",
+    "jest-plugin-context": "^2.9.0",
     "next": "^11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
