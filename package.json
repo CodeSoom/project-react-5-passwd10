@@ -9,6 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
+    "deploy": "yarn build && yarn export",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "test:unit": "jest",
     "coverage": "yarn test:unit -- --coverage",
