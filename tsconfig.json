@@ -18,7 +18,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
-    "paths": {                              
+    "paths": {
       "pages/*": ["src/pages/*"],
     },
   },
