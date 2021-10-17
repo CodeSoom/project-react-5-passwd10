@@ -59,7 +59,6 @@ module.exports = {
     'linebreak-style': 'off',
     'no-proto': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
   },

@@ -11,7 +11,7 @@ module.exports = {
     './.next/',
   ],
   collectCoverageFrom: [
-    './pages/**/*.{js,jsx,ts,tsx}',
+    '.src/pages/**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],

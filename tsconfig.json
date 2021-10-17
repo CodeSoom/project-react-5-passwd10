@@ -18,8 +18,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
-    "paths": {                              
-      "pages/*": ["./pages/*"],
+    "paths": {
+      "pages/*": ["src/pages/*"],
     },
   },
   "include": [
