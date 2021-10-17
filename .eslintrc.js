@@ -23,6 +23,7 @@ module.exports = {
   settings: {
     'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
   },
+  ignorePatterns: ['out'],
   rules: {
     'import/extensions': [
       'error',
