@@ -1,11 +1,21 @@
 import { useState, MouseEvent, ChangeEvent } from 'react';
 
+import { collection, addDoc } from 'firebase/firestore';
+
+import firestore from '../../firebase/clientApp';
+
 export default function PostNewArticlePage() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 
+  const post = async ({ postTitle, postContent }: { postTitle: string, postContent: string}) => {
+    await addDoc(collection(firestore, 'posts'), { title: postTitle, content: postContent });
+  };
+
   const handleSubmit = (event: MouseEvent) => {
     event.preventDefault();
+
+    post({ postTitle: title, postContent: content });
   };
 
   const handleChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
