@@ -1,4 +1,8 @@
-export default function PostDetailPage({ postData }) {
+interface Props {
+  postData: string;
+}
+
+export default function PostDetailPage({ postData }: Props) {
   return (
     <>
       {postData}

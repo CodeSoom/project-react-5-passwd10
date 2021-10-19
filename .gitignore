@@ -5,3 +5,4 @@ out
 .env
 .firebaserc
 .firebase
+serviceAccountKey.json

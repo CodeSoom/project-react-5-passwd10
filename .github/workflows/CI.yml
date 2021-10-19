@@ -1,6 +1,9 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -16,17 +19,29 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Install
         run: yarn install --frozen-lockfile
+
+      - name: Add env file
+        run: |
+          [ -e .env ] && rm .env
+          touch .env
+          echo '${{ secrets.ENV }}' >> .env
+
       - name: Test
         run: yarn test
+
       - name: Lint
         run: yarn lint
 
+      - name: Deploy
+        run: yarn deploy
+
       - name: Deploy to Firebase
-      - uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting 
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          
+          PROJECT_ID: ${{ secrets.FIREBASE_PROJECTID }}
