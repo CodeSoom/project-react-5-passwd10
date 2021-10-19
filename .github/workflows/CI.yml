@@ -16,22 +16,25 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+
       - name: Add env file
         run: |
           rm .env
           touch .env
           echo '${{ secrets.ENV }}' >> .env
-      - name: Install
-        run: yarn install --frozen-lockfile
+
       - name: Test
         run: yarn test
+
       - name: Lint
         run: yarn lint
 
       - name: Deploy to Firebase
-      - uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          
