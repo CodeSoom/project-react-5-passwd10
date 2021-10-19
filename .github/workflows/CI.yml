@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          script: |
+            rm .env
+            touch .env
+            echo '${{ secrets.ENV }}' >> .env
       - name: Install
         run: yarn install --frozen-lockfile
       - name: Test
