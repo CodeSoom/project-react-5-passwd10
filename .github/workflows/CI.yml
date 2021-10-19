@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Add env file
-      - run: |
+        run: |
           rm .env
           touch .env
           echo '${{ secrets.ENV }}' >> .env
