@@ -35,6 +35,9 @@ jobs:
       - name: Lint
         run: yarn lint
 
+      - name: Build
+        run: yarn build
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
