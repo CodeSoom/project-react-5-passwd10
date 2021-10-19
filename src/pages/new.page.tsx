@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useState, MouseEvent, ChangeEvent } from 'react';
 
 export default function PostNewArticlePage() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState<string>('');
+  const [content, setContent] = useState<string>('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: MouseEvent) => {
     event.preventDefault();
   };
 
-  const handleChangeTitle = (event) => {
+  const handleChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     const { target: { value } } = event;
     setTitle(value);
   };
 
-  const handleChangeContent = (event) => {
+  const handleChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const { target: { value } } = event;
     setContent(value);
   };
