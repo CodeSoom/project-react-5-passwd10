@@ -1,7 +1,7 @@
-name: CI
+name: CD
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -34,3 +34,14 @@ jobs:
 
       - name: Lint
         run: yarn lint
+
+      - name: Deploy
+        run: yarn deploy
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting,functions
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: ${{ secrets.FIREBASE_PROJECTID }}
