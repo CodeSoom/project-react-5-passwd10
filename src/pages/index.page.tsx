@@ -28,7 +28,7 @@ export default function HomePage({ posts }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const querySnapshot = await getDocs(collection(firestore, 'posts'));
   const posts: Post[] = [];
 
@@ -52,6 +52,5 @@ export async function getStaticProps() {
     props: {
       posts,
     },
-    revalidate: 60,
   };
 }
