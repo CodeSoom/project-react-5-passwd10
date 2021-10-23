@@ -6,7 +6,10 @@ const admin = require('firebase-admin');
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
-const nextjsServer = next({ dev });
+const nextjsServer = next({
+  dev,
+  conf: { distDir: '.next' },
+});
 const nextjsHandle = nextjsServer.getRequestHandler();
 
 admin.initializeApp();

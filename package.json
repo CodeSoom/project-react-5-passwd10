@@ -8,9 +8,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "next export",
-    "deploy": "yarn build && yarn export",
+    "build:prd": "NODE_ENV=production yarn build",
+    "start": "NODE_ENV=production next start",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "coverage": "yarn jest -- --coverage",
     "test": "jest"
