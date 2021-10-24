@@ -28,7 +28,7 @@ export default function HomePage({ posts }: Props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const querySnapshot = await getDocs(collection(firestore, 'posts'));
   const posts: Post[] = [];
 
