@@ -1,4 +1,4 @@
-import { GetStaticPropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 
 import { collection, getDocs } from 'firebase/firestore';
 
@@ -22,28 +22,7 @@ export default function PostDetailPage({ postData }: Props) {
   );
 }
 
-export async function getStaticPaths() {
-  const querySnapshot = await getDocs(collection(firestore, 'posts'));
-
-  if (!querySnapshot) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const paths = new Array(querySnapshot.size).fill('').map((_, i) => ({
-    params: {
-      id: String(i + 1),
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.params;
 
   const querySnapshot = await getDocs(collection(firestore, 'posts'));
