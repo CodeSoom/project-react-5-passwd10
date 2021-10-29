@@ -7,6 +7,9 @@ import {
 
 import firestore from '../../firebase/clientApp';
 
+import PostForm from '../components/PostForm';
+import SubmitButton from '../components/SubmitButton';
+
 export default function PostNewArticlePage() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
@@ -45,38 +48,17 @@ export default function PostNewArticlePage() {
   return (
     <div>
       <h2>글 작성하기</h2>
-      <form id="post-form">
-        <div>
-          <label htmlFor="post-title">
-            제목
-          </label>
-          <input
-            type="text"
-            id="post-title"
-            name="title"
-            value={title}
-            onChange={handleChangeTitle}
-          />
-        </div>
-        <div>
-          <label htmlFor="post-content">
-            내용
-          </label>
-          <textarea
-            id="post-content"
-            name="content"
-            value={content}
-            onChange={handleChangeContent}
-          />
-        </div>
-      </form>
-      <button
-        type="submit"
+      <PostForm
+        title={title}
+        content={content}
+        formId="post-form"
+        handleChangeTitle={handleChangeTitle}
+        handleChangeContent={handleChangeContent}
+      />
+      <SubmitButton
         form="post-form"
-        onClick={handleSubmit}
-      >
-        게시하기
-      </button>
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }
