@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { collection, getDocs } from 'firebase/firestore';
 
 import firestore from '../../firebase/clientApp';
@@ -19,8 +21,9 @@ export default function HomePage({ posts }: Props) {
       <ul>
         {posts.map(({ id, title }) => (
           <li key={id}>
-            제목:
-            {title}
+            <Link href={`/${id}`}>
+              {title}
+            </Link>
           </li>
         ))}
       </ul>
@@ -28,7 +31,7 @@ export default function HomePage({ posts }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const querySnapshot = await getDocs(collection(firestore, 'posts'));
   const posts: Post[] = [];
 
@@ -52,6 +55,5 @@ export async function getStaticProps() {
     props: {
       posts,
     },
-    revalidate: 60,
   };
 }
